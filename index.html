@@ -34,10 +34,13 @@
         <img id="album_art" class="cd-image" src="..." alt="Album Art">
       </div>
 
-      <div class="time-display">
+    <div class="progress-container">
+        <div class="time-display">
         <span id="current_time">0:00</span>
         <span id="total_time">0:00</span>
-        </div>
+        </div>
+        <input type="range" min="0" max="100" id="progress_slider" value="0" />
+    </div>
       <input type="range" min="0" max="100" id="progress_slider" value="0"/>
 
       <div class="media_controls">
