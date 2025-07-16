@@ -1,13 +1,13 @@
-# 🎵 Glasswave
+# 🎵 Glassware
 
-**Glasswave** is a minimalist, translucent-glass-themed music player built with vanilla HTML, CSS, and JavaScript.
+**Glassware** is a minimalist, translucent-glass-themed music player built with vanilla HTML, CSS, and JavaScript.
 
 <img width="900" height="880" alt="image" src="https://github.com/user-attachments/assets/460d1203-0b59-4b53-9009-28022d130491" />
 
 
 ## 🧊 About the Project
 
-Glasswave was developed as part of a group project for an introductory **Web Development** course. The primary goal was to design and implement a fully functional music player **without using any frameworks, libraries, APIs, or third-party tools** - just pure HTML, CSS, and JavaScript.
+Glassware was developed as part of a group project for an introductory **Web Development** course. The primary goal was to design and implement a fully functional music player **without using any frameworks, libraries, APIs, or third-party tools** - just pure HTML, CSS, and JavaScript.
 
 > **Theme:** A modern, glassmorphic user interface  
 > **Duration:** 3 weeks  
@@ -15,7 +15,7 @@ Glasswave was developed as part of a group project for an introductory **Web Dev
 
 
 ## ✨ Try it out 
-˃ https://glasswave.vercel.app/
+˃ https://glassware.vercel.app/
 
 ## 🧩 Features
 
