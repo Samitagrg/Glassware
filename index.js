@@ -155,5 +155,81 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+        // Event Listeners
+    function setupEventListeners() {
+
+        // Play/Pause 
+        elements.playButton.addEventListener('click', playTrack);
+        elements.pauseButton.addEventListener('click', pauseTrack);
+
+        // Skip 
+        elements.leftSkipButton.addEventListener('click', () => skipTrack('prev'));
+        elements.rightSkipButton.addEventListener('click', () => skipTrack('next'));
+
+        // Loop 
+        elements.loopButton.addEventListener('click', () => {
+            playerState.isLooping = !playerState.isLooping;
+            elements.loopButton.classList.toggle("active", playerState.isLooping);
+        });
+
+        // Shuffle 
+        elements.shuffleButton.addEventListener('click', () => {
+            playerState.isShuffling = !playerState.isShuffling;
+            elements.shuffleButton.classList.toggle("active", playerState.isShuffling);
+        });
+
+        // Slider
+        elements.progressSlider.addEventListener('input', () => {
+            const seekTime = (elements.progressSlider.value / 100) * elements.audio.duration;
+            elements.audio.currentTime = seekTime;
+        });
+
+   elements.audio.addEventListener('ended', () => {
+            if (playerState.isLooping) {
+                elements.audio.currentTime = 0;
+                elements.audio.play();
+            } else {
+                skipTrack('next');
+            }
+        });
+
+        elements.audio.addEventListener('timeupdate', () => {
+            const progress = (elements.audio.currentTime / elements.audio.duration) * 100;
+            elements.progressSlider.value = progress || 0;
+        });
+
+        elements.audio.addEventListener('play', () => {
+            elements.albumArt.style.animationPlayState = 'running';
+        });
+
+        elements.audio.addEventListener('pause', () => {
+            elements.albumArt.style.animationPlayState = 'paused';
+        });
+
+        
+        elements.toggleSidebarBtn.addEventListener("click", () => {
+            elements.sidebar.classList.toggle("open");
+            elements.toggleSidebarBtn.classList.toggle("open");
+        });
+
+        elements.playlistContainer.addEventListener("click", (e) => {
+            if (e.target.tagName === "LI") {
+                const index = parseInt(e.target.dataset.index);
+                playTrackByIndex(index);
+            }
+        });
+
+        
+        document.addEventListener('click', (e) => {
+            if (!elements.sidebar.contains(e.target) && 
+                !elements.toggleSidebarBtn.contains(e.target) && 
+                elements.sidebar.classList.contains('open')) {
+                    closeSidebar();
+            }
+        });
+
+    }
+
+
 });
 
