@@ -15,7 +15,7 @@ Glassware was developed as part of a group project for an introductory **Web Dev
 
 
 ## ✨ Try it out 
-˃ https://glassware.vercel.app/
+˃ https://glassware-beta.vercel.app
 
 ## 🧩 Features
 
