@@ -230,6 +230,37 @@ window.addEventListener('DOMContentLoaded', () => {
 
     }
 
+        const timeElements = {
+        currentTime: document.getElementById('current_time'),
+        totalTime: document.getElementById('total_time')
+        };
+
+        // Utility function to format time
+        function formatTime(seconds) {
+        if (isNaN(seconds)) return '0:00';
+        
+        const minutes = Math.floor(seconds / 60);
+        const remainingSeconds = Math.floor(seconds % 60);
+        return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
+        }
+
+        elements.audio.addEventListener('timeupdate', () => {
+        const progress = (elements.audio.currentTime / elements.audio.duration) * 100;
+        elements.progressSlider.value = progress || 0;
+        
+        timeElements.currentTime.textContent = formatTime(elements.audio.currentTime);
+        timeElements.totalTime.textContent = formatTime(elements.audio.duration);
+        });
+
+        elements.audio.addEventListener('loadedmetadata', () => {
+        timeElements.totalTime.textContent = formatTime(elements.audio.duration);
+        timeElements.currentTime.textContent = formatTime(0);
+        });
+
+    // Initialize everything
+    initializePlayer();
+    setupEventListeners();
+
 
 });
 
