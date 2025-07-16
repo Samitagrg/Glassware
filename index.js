@@ -83,6 +83,77 @@ window.addEventListener('DOMContentLoaded', () => {
         const encodedURL = encodeURI(playlist[index].cover);
         elements.backgroundOverlay.style.backgroundImage = `url(${encodedURL})`;
     }
-    
+     function updateActiveListItem() {
+        document.querySelectorAll("#playlist_items li").forEach((item, i) => {
+            item.classList.toggle("active", i === playerState.currentTrack);
+        });
+    }
+
+    function populatePlaylist() {
+        elements.playlistContainer.innerHTML = '';
+
+        playlist.forEach((track, index) => {
+            const li = document.createElement("li");
+            li.innerText = ${track.track} - ${track.artist};
+            li.dataset.index = index;
+            elements.playlistContainer.appendChild(li);
+        });
+    }
+
+    function closeSidebar() {
+        elements.sidebar.classList.remove("open");
+        elements.toggleSidebarBtn.classList.remove("open");
+    }
+
+    function playTrack() {
+        elements.audio.play();
+        updateSongInfo(playerState.currentTrack);
+        setPlayPauseButtonState(true);
+    }
+
+    function pauseTrack() {
+        elements.audio.pause();
+        setPlayPauseButtonState(false);
+    }
+
+    function skipTrack(direction) {
+        if (direction === 'next') {
+            if (playerState.isShuffling) {
+                playerState.currentTrack = getRandomTrack();
+            } else {
+                playerState.currentTrack = (playerState.currentTrack + 1) % playlist.length;
+            }
+        } else if (direction === 'prev') {
+            playerState.currentTrack = (playerState.currentTrack - 1 + playlist.length) % playlist.length;
+        }
+        
+        elements.audio.src = playlist[playerState.currentTrack].file;
+        playTrack();
+        updateActiveListItem();
+    }
+
+    function getRandomTrack() {
+        if (playlist.length <= 1) return 0;
+        
+        let nextTrack;
+        do {
+            nextTrack = Math.floor(Math.random() * playlist.length);
+        } while (nextTrack === playerState.currentTrack);
+        
+        return nextTrack;
+    }
+
+    function playTrackByIndex(index) {
+        playerState.currentTrack = index;
+        elements.audio.src = playlist[playerState.currentTrack].file;
+        updateSongInfo(playerState.currentTrack);
+        playTrack();
+        updateActiveListItem();
+        
+        if (isMobile()) {
+            closeSidebar();
+        }
+    }
+
 });
 
