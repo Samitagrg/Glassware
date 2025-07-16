@@ -203,3 +203,137 @@ body {
         4px 4px 8px rgba(209, 217, 230, 0.6),
         -4px -4px 8px rgba(255, 255, 255, 0.8);
 }
+
+/* ===== MEDIA CONTROLS ===== */
+.media_controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 30px;
+    position: relative;
+    z-index: 2;
+}
+
+.control_btn {
+    background: linear-gradient(145deg, #f0f2f5, #e8ebf0);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 18px;
+    color: #4a5568;
+    transition: all 0.3s ease;
+    box-shadow:
+        1px 1px 2px rgba(209, 217, 230, 0.5),
+        -1px -1px 2px rgba(255, 255, 255, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.control_btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.control_btn:hover::before {
+    opacity: 1;
+}
+
+.control_btn:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        4px 4px 20px rgba(209, 217, 230, 0.7),
+        -4px -4px 20px rgba(255, 255, 255, 0.9);
+}
+
+.control_btn:active {
+    transform: translateY(0);
+    box-shadow:
+        inset 4px 4px 5px rgba(209, 217, 230, 0.7),
+        inset -4px -4px 5px rgba(255, 255, 255, 0.9);
+}
+
+/* =====  BUTTON STYLES ===== */
+/* Play/Pause buttons */
+#play_button,
+#pause_button {
+    width: 70px;
+    height: 70px;
+    font-size: 24px;
+    box-shadow:
+        1px 1px 5px rgba(209, 217, 230, 0.6),
+        -1px -1px 5px rgba(255, 255, 255, 0.8);
+}
+
+#play_button:hover,
+#pause_button:hover {
+    box-shadow:
+        1px 1px 28px rgba(209, 217, 230, 0.7),
+        -1px -1px 28px rgba(255, 255, 255, 0.9);
+}
+
+#play_button:active,
+#pause_button:active {
+    box-shadow:
+        inset 6px 6px 12px rgba(209, 217, 230, 0.7),
+        inset -6px -6px 12px rgba(255, 255, 255, 0.9);
+}
+
+/* Skip buttons */
+#left_skip_button,
+#right_skip_button {
+    width: 45px;
+    height: 45px;
+    font-size: 16px;
+}
+
+/* Shuffle and Loop buttons */
+#shuffle_button,
+#loop_button {
+    height: 40px;
+    width: 40px;
+}
+
+#shuffle_button svg,
+#loop_button svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+#loop_button svg {
+    width: 15px;
+    height: 15px;
+}
+
+#shuffle_button.active,
+#loop_button.active {
+    color: #667eea;
+}
+
+/* Play/Pause button visibility */
+#pause_button {
+    display: none;
+}
+
+.playing #play_button {
+    display: none;
+}
+
+.playing #pause_button {
+    display: flex;
+}
