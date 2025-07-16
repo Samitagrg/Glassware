@@ -83,7 +83,8 @@ window.addEventListener('DOMContentLoaded', () => {
         const encodedURL = encodeURI(playlist[index].cover);
         elements.backgroundOverlay.style.backgroundImage = `url(${encodedURL})`;
     }
-     function updateActiveListItem() {
+
+    function updateActiveListItem() {
         document.querySelectorAll("#playlist_items li").forEach((item, i) => {
             item.classList.toggle("active", i === playerState.currentTrack);
         });
@@ -94,7 +95,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
         playlist.forEach((track, index) => {
             const li = document.createElement("li");
-            li.innerText = ${track.track} - ${track.artist};
+            li.innerText = `${track.track} – ${track.artist}`;
             li.dataset.index = index;
             elements.playlistContainer.appendChild(li);
         });
@@ -155,7 +156,7 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-        // Event Listeners
+    // Event Listeners
     function setupEventListeners() {
 
         // Play/Pause 
@@ -184,7 +185,8 @@ window.addEventListener('DOMContentLoaded', () => {
             elements.audio.currentTime = seekTime;
         });
 
-   elements.audio.addEventListener('ended', () => {
+
+        elements.audio.addEventListener('ended', () => {
             if (playerState.isLooping) {
                 elements.audio.currentTime = 0;
                 elements.audio.play();
@@ -212,6 +214,7 @@ window.addEventListener('DOMContentLoaded', () => {
             elements.toggleSidebarBtn.classList.toggle("open");
         });
 
+        
         elements.playlistContainer.addEventListener("click", (e) => {
             if (e.target.tagName === "LI") {
                 const index = parseInt(e.target.dataset.index);
@@ -229,7 +232,6 @@ window.addEventListener('DOMContentLoaded', () => {
         });
 
     }
-
         const timeElements = {
         currentTime: document.getElementById('current_time'),
         totalTime: document.getElementById('total_time')
@@ -260,7 +262,4 @@ window.addEventListener('DOMContentLoaded', () => {
     // Initialize everything
     initializePlayer();
     setupEventListeners();
-
-
 });
-
