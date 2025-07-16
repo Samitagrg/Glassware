@@ -337,3 +337,112 @@ body {
 .playing #pause_button {
     display: flex;
 }
+
+/* ===== SIDEBAR ===== */
+.sidebar-toggle {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 100;
+    background: linear-gradient(145deg, #f0f2f5, #e8ebf0);
+    border: none;
+    border-radius: 12px;
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+    color: #4a5568;
+    cursor: pointer;
+    box-shadow:
+        10px 10px 20px rgba(209, 217, 230, 0.4),
+        -1px -1px 20px rgba(255, 255, 255, 0.4);
+    transition: all 0.3s ease;
+}
+
+.sidebar-toggle::after {
+    content: '☰';
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.sidebar-toggle.open::after {
+    content: '⤫';
+    transform: rotate(180deg);
+}
+
+.sidebar {
+    position: fixed;
+    margin: 10px;
+    padding: 20px 15px;
+    top: 100px;
+    width: 300px;
+    height: 70%;
+    z-index: 200;
+    border-radius: 20px 20px 20px 20px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    box-shadow:
+        10px 0 30px rgba(0, 0, 0, 0.1),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    border-right: 1px solid rgba(255, 255, 255, 0.15);
+    
+    /* Animation properties */
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    opacity: 0;
+    visibility: hidden;
+}
+
+.sidebar.open {
+    transform: translateX(-150%);
+    opacity: 1;
+    visibility: visible;
+}
+
+.sidebar-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: left;
+    color: white;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== PLAYLIST ===== */
+.playlist-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-style: italic;
+    opacity: 0.7;
+}
+
+.playlist-items li {
+    padding: 12px 10px;
+    margin-bottom: 20px;
+    background: linear-gradient(145deg, #f0f2f5, #e8ebf0);
+    border-radius: 12px;
+    box-shadow:
+        inset 2px 2px 5px rgba(255, 255, 255, 0.5),
+        inset -2px -2px 5px rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    color: #2d3748;
+    transition: all 0.2s ease;
+    font-size: 14px;
+}
+
+.playlist-items li:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.02);
+    box-shadow:
+        4px 4px 10px rgba(209, 217, 230, 0.6),
+        -4px -4px 10px rgba(255, 255, 255, 0.9);
+}
+
+.playlist-items li.active {
+    color: #667eea;
+    border-left: 1.5px solid #667eea;
+    opacity: 1;
+}
