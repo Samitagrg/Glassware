@@ -83,4 +83,6 @@ window.addEventListener('DOMContentLoaded', () => {
         const encodedURL = encodeURI(playlist[index].cover);
         elements.backgroundOverlay.style.backgroundImage = `url(${encodedURL})`;
     }
+    
 });
+
