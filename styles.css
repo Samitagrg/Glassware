@@ -1,3 +1,4 @@
+/* ===== BASE ===== */
 * {
     margin: 0;
     padding: 0;
@@ -103,6 +104,7 @@ body {
     font-size: 16px;
     font-weight: 400;
 }
+
 /* ===== ALBUM ART / CD ===== */
 .cd-wrapper {
     width: 200px;
@@ -202,21 +204,6 @@ body {
     box-shadow:
         4px 4px 8px rgba(209, 217, 230, 0.6),
         -4px -4px 8px rgba(255, 255, 255, 0.8);
-}
-
-.time-display {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.8);
-  font-weight: 500;
-}
-
-#current_time,
-#total_time {
-  font-family: monospace;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 /* ===== MEDIA CONTROLS ===== */
@@ -461,6 +448,30 @@ body {
     border-left: 1.5px solid #667eea;
     opacity: 1;
 }
+
+.progress-container {
+  width: 100%;
+  margin: 30px 0;
+  position: relative;
+  z-index: 2;
+}
+
+.time-display {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+}
+
+#current_time,
+#total_time {
+  font-family: monospace;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 480px) {
     .sidebar.open {
         transform: translateX(0%)
@@ -504,4 +515,3 @@ body {
         height: 80%;
     }
 }
-
