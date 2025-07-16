@@ -15,6 +15,32 @@ body {
     padding: 20px;
 }
 
+/* ===== LAYOUT CONTAINERS ===== */
+#app_wrapper {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+#background_overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(100px) brightness(0.7);
+    transform: scale(1.1);
+    opacity: 0.6;
+    z-index: -1;
+    pointer-events: none;
+}
+
 /* ===== PLAYER WRAPPER ===== */
 .player-wrapper {
     border-radius: 30px;
